@@ -2512,7 +2512,7 @@ class Visual:
         # load an image set
         self.load_set()
 
-    def load_set(self, index=None):
+    def load_set(self, index=None): #加载图片
         if type(index) == int:
             index = cfg.IMAGE_SETS[index]
         if index == None:
@@ -3247,7 +3247,7 @@ class SpaceLabel:
             str_list.append(_('-Back'))
             self.label.text = ''.join(str_list)
 
-def check_match(input_type, check_missed = False):
+def check_match(input_type, check_missed = False): #结果校验
     current = 0
     back_data = ''
     operation = 0
@@ -3349,7 +3349,7 @@ class AnalysisLabel:
                 # data is a dictionary of lists.
                 if mod in ['position1', 'position2', 'position3', 'position4',
                            'vis1', 'vis2', 'vis3', 'vis4', 'audio', 'audio2', 'color', 'image']:
-                    rights[mod] += int((data[mod][x] == data[mod][x-back]) and data[mod+'_input'][x])
+                    rights[mod] += int((data[mod][x] == data[mod][x-back]) and data[mod+'_input'][x]) #统计正确的数量
                     wrongs[mod] += int((data[mod][x] == data[mod][x-back])  ^  data[mod+'_input'][x]) # ^ is XOR
                     if cfg.JAEGGI_SCORING:
                         rights[mod] += int(data[mod][x] != data[mod][x-back]  and not data[mod+'_input'][x])
